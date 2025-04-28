@@ -1,7 +1,8 @@
-import { getData, nest } from './helpers.mjs';
+import { getData, nest, getParams } from './helpers.mjs';
 import { d3_extended as d3 } from './d3.extensions.mjs';
 
 export async function render (containerElem) {
+	const { presentation } = getParams();
 	const data = await getData('events');
 	const nested = nest.call(data.filter(d => !isNaN(+d.year)), 'year');
 	const split = [[],[]];
@@ -14,7 +15,8 @@ export async function render (containerElem) {
 
 	const container = d3.select(containerElem);
 	const entries = container.addElems('div', 'column', split)
-	.addElems('div', 'date hide', d => d)
+	.addElems('div', 'date', d => d)
+		.classed('hide', presentation === 'true')
 		.attr('tabindex', (d, i) => i + 1)
 		.attr('data-year', d => d.key)
 		.style('top', d => `${timescale(d.key)}px`)

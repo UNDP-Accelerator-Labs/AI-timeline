@@ -30,3 +30,11 @@ export async function getData (sheet) {
 	const data = await d3.csv(`./data/${sheet}.csv`);
 	return data;
 }
+export function getParams () {
+	const params = new URLSearchParams(document.location.search);
+	const obj = {}
+	for (const [key, value] of params.entries()) {
+		obj[key] = value;
+	}
+	return obj;
+}

@@ -1,5 +1,5 @@
-import { render as renderEvents } from './events.mjs'
-import { render as renderPeriods } from './periods.mjs'
+import { render as renderEvents } from './events.mjs';
+import { render as renderPeriods } from './periods.mjs';
 
 const onLoad = async function () {
 	renderPeriods('body');
