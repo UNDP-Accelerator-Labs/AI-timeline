@@ -27,6 +27,6 @@ export async function getData (sheet) {
 		console.log('missing data sheet to fetch');
 		return [];
 	}
-	const data = await d3.csv(`../data/${sheet}.csv`);
+	const data = await d3.csv(`./data/${sheet}.csv`);
 	return data;
 }
