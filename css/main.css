@@ -1,0 +1,114 @@
+html, body, * {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: Helvetica, Arial, sans-serif;
+}
+.hide {
+/*	opacity: 0;*/
+}
+main {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 75px;
+	min-height: 100vh;
+	padding: 25px 0;
+}
+div.timeline {
+	width: 1px;
+	height: 100vh;
+	position: fixed;
+	left: 50%;
+	background-color: #000;
+}
+main > div {
+	position: relative;
+}
+div.periods {
+	width: 100%;
+}
+div.period {
+	position: absolute;
+	width: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: tomato;
+	z-index: -1;
+	opacity: .5;
+}
+.period.winter {
+	background-color: lightsteelblue;
+}
+div.date {
+	position: absolute;
+	background-color: rgba(255,255,255,.9);
+	width: 100%;
+	box-shadow: 0 0 25px rgba(255,255,255,.9);
+}
+main > div:first-child div.date {
+	right: 0;
+	text-align: right;
+}
+div.date::before {
+	content: attr(data-year);
+	position: absolute;
+	right: 100%;
+	top: -.55em;
+	width: 75px;
+	text-align: center;
+	font-weight: bold;
+	background-color: #FFF;
+}
+div.date::after {
+	content: '';
+	position: absolute;
+	top: -1px;
+	left: 0;
+	height: 0;
+	width: 50%;
+	background-color: #000;
+	border-top: 1px solid #000;
+}
+main > div:first-child div.date::before {
+	left: 100%;
+}
+main > div:first-child div.date::after {
+	right: 0;
+	left: auto;
+}
+main > div:first-child div.entry {
+	margin-left: auto;
+}
+div.entry {
+	padding: 10px 10px;
+	width: 50%;
+	min-width: 50%;
+}
+div.citation {
+	font-size: 1.5rem;
+	width: 75%;
+}
+div.people, div.concepts {
+	margin-bottom: .5em;
+}
+.chip {
+	background-color: #333;
+	color: #FFF;
+	padding: 0 10px;
+	height: 25px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	margin: 2.5px;
+}
+.chip.concept {
+	background-color: #CCC;
+	color: #000;
+}
+h2 {
+	margin-bottom: .5em;
+}
+p {
+	padding-bottom: .5em;
+}
