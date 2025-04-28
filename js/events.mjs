@@ -26,8 +26,10 @@ export async function render (containerElem) {
 			d3.select(this.parentNode).moveToFront();
 		})
 	
-	entries.addElems('p', 'cateory', d => d.category?.length && d.category !== 'citation' ? [d] : [])
-		.html(d => `[${d.category}]`)
+	entries.addElems('small', 'category', d => d.category?.length && d.category !== 'citation' ? [d] : [])
+		.html(d => `[${d.category}: ${d.subcategory}]`)
+	entries.addElems('small', 'places', d => d.places?.length ? [d] : [])
+		.html(d => `${d.places.split(';')}`)
 	entries.addElems('h2', 'title', d => d.name?.length ? [d] : [])
 		.addElems('a')
 		.attr('href', d => d.links?.split()[0] || '#')
